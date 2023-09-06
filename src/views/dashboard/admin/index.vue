@@ -24,6 +24,11 @@
           <bar-chart />
         </div>
       </el-col>
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          <er-chart />
+        </div>
+      </el-col>
     </el-row>
 
     <el-row :gutter="8">
@@ -50,6 +55,7 @@ import BarChart from './components/BarChart'
 import TransactionTable from './components/TransactionTable'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
+import ErChart from './components/ErChart'
 
 const lineChartData = {
   newVisitis: {
@@ -81,7 +87,8 @@ export default {
     BarChart,
     TransactionTable,
     TodoList,
-    BoxCard
+    BoxCard,
+    ErChart
   },
   data() {
     return {
@@ -104,7 +111,7 @@ export default {
 
   .github-corner {
     position: absolute;
-    top: 0px;
+    top: 0;
     border: 0;
     right: 0;
   }
