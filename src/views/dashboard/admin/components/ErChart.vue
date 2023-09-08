@@ -43,13 +43,29 @@ export default {
   },
   methods: {
     initChart() {
+      // 如何设置样式 https://echarts.apache.org/zh/option.html#series-graph.data.label.fontSize
       this.chart = echarts.init(this.$el, 'macarons')
-
+      this.chart.showLoading() // 开启 loading 效果
+      this.chart.hideLoading() // 隐藏 loading 效果
+      // 这里可以调用api，把数据设置到data里从而实现动态加载数据
       this.chart.setOption({
         title: {
           text: 'Basic Graph'
         },
-        tooltip: {},
+        tooltip: {
+          enterable: true, // 鼠标是否可进入提示框浮层中
+          // triggerOn: 'click', // 提示框触发的条件,'click'鼠标点击时触发
+          trigger: 'item'
+          // 鼠标悬浮时，标签可视化
+          // formatter: function(params) {
+          //   var key
+          //   let html = ''
+          //   for (key in params.data) {
+          //     html = html + '<br class="select">' + key + ':' + params.data[key] + '<br>'
+          //   }
+          //   return '<p class="select">' + html + '</p>'
+          // }
+        },
         animationDurationUpdate: 1500,
         animationEasingUpdate: 'quinticInOut',
         series: [
@@ -141,3 +157,15 @@ export default {
   }
 }
 </script>
+
+<style>
+// 可以选中悬浮框内的文本
+.select {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+*{
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+</style>
